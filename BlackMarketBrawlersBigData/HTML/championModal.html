@@ -1,0 +1,87 @@
+﻿<div id="ChampModal">
+    <div class="modal-header">
+        <div class="col-md-4">
+            <h1>{{champion.ChampionName}}</h1>
+        </div>
+        <div class="col-md-8">
+            <img class="img-responsive img-thumbnail img-rounded" ng-src="/Images/ChampionImages/{{champion.ChampionName}}_Square_0.png" />
+        </div> 
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6" ng-click="drawRadar();">
+                <accordion>
+                    <accordion-group is-open="status.open">
+                        <accordion-heading>
+                            Preferred Lanes
+                        </accordion-heading>
+                        <div id="lanePrefRadarDiv">
+                            <canvas id="lanePrefRadar"></canvas>
+                            <label class="label label-default">Favorite Lane: {{champion.LanePref}}</label>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+
+            <div class="col-md-6" ng-click="drawPie();">
+                <accordion>
+                    <accordion-group is-open="status.open">
+                        <accordion-heading>
+                            Kill/Death Stats
+                        </accordion-heading>
+                        <div id="killDeathStatsDiv">
+                            <canvas id="killDeathStats"></canvas>
+                            <label class="label label-default">Average KD: {{champion.AverageKDA}}%</label>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6" ng-click="drawPolarAreaChart();">
+                <accordion>
+                    <accordion-group is-open="status.open">
+                        <accordion-heading>
+                            Average Game Stats
+                        </accordion-heading>
+                        <div id="averageGameStatsDiv">
+                            <canvas id="averageGameStats"></canvas>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+
+            <div class="col-md-6" ng-click="drawDoghnut();">
+                <accordion>
+                    <accordion-group is-open="status.open">
+                        <accordion-heading>
+                            Ban Stats
+                        </accordion-heading>
+                        <div id="banStatsDiv">
+                            <canvas id="banStats"></canvas>
+                            <label class="label label-default">Average Ban Rate: {{champion.banRate}}%</label>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <carousel interval="myInterval" no-wrap="noWrapSlides">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}" style="height: 100px; margin:auto;">
+                        <div class="carousel-caption">
+                        </div>
+                        <label class="label label-default">{{slide.text}}</label>
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="cancel();">Close</button>
+</div>

@@ -1,0 +1,146 @@
+﻿<section>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Top Lane</h2>
+                        </th>
+                        <th>
+                            <h2>Middle Lane</h2>
+                        </th>
+                        <th>
+                            <h2>Bottom Lane</h2>
+                        </th>
+                        <th>
+                            <h2>Junglers</h2>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div ng-repeat="champion in topChampions" class="col-md-3">
+                                <img height="32" width="32" class="img-rounded" ng-src="/Images/ChampionImages/{{champion.ChampionName}}_Square_0.png" />
+                                <label class="label label-default">{{champion.ChampionName}}</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-repeat="champion in middleChampions" class="col-md-3">
+                                <img height="32" width="32" class="img-rounded" ng-src="/Images/ChampionImages/{{champion.ChampionName}}_Square_0.png" />
+                                <label class="label label-default">{{champion.ChampionName}}</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-repeat="champion in bottomChampions" class="col-md-3">
+                                <img height="32" width="32" class="img-rounded" ng-src="/Images/ChampionImages/{{champion.ChampionName}}_Square_0.png" />
+                                <label class="label label-default">{{champion.ChampionName}}</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-repeat="champion in jungleChampions" class="col-md-3">
+                                <img height="32" width="32" class="img-rounded" ng-src="/Images/ChampionImages/{{champion.ChampionName}}_Square_0.png" />
+                                <label class="label label-default">{{champion.ChampionName}}</label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row" ng-click="drawLanePrefGraph();">
+        <div class="col-md-12">
+            <accordion>
+                <accordion-group is-open="status.open">
+                    <accordion-heading>
+                        Lane Prefrences
+                    </accordion-heading>
+                    <div>
+                        <div id="lanePrefrencesDiv0">
+                            <canvas style="width:100%;" id="lanePrefrences0"></canvas>
+                            <label class="label label-default">Most Champions in Lane: {{MostPlayedLane}}</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="lanePrefrencesDiv1">
+                            <canvas style="width:100%;" id="lanePrefrences1"></canvas>
+                            <label class="label label-default">Most Champions in Lane: {{MostPlayedLane}}</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="lanePrefrencesDiv2">
+                            <canvas style="width:100%;" id="lanePrefrences2"></canvas>
+                            <label class="label label-default">Most Champions in Lane: {{MostPlayedLane}}</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="lanePrefrencesDiv3">
+                            <canvas style="width:100%;" id="lanePrefrences3"></canvas>
+                            <label class="label label-default">Most Champions in Lane: {{MostPlayedLane}}</label>
+                        </div>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+    </div>
+
+    <div class="row" ng-click="drawKDGraph();">
+        <div class="col-md-12">
+            <accordion>
+                <accordion-group is-open="status.open">
+                    <accordion-heading>
+                        Kill Death Stats
+                    </accordion-heading>
+                    <div id="kdStatsDiv0">
+                        <canvas style="width:100%;" id="kdStats0"></canvas>
+                        <label class="label label-default">Best KD: {{highestKDChamp.ChampionName}} with a KDA = {{highestKDChamp.AverageKDA}}</label>
+                    </div>
+                    <div id="kdStatsDiv1">
+                        <canvas style="width:100%;" id="kdStats1"></canvas>
+                        <label class="label label-default">Best KD: {{highestKDChamp.ChampionName}} with a KDA = {{highestKDChamp.AverageKDA}}</label>
+                    </div>
+                    <div id="kdStatsDiv2">
+                        <canvas style="width:100%;" id="kdStats2"></canvas>
+                        <label class="label label-default">Best KD: {{highestKDChamp.ChampionName}} with a KDA = {{highestKDChamp.AverageKDA}}</label>
+                    </div>
+                    <div id="kdStatsDiv3">
+                        <canvas style="width:100%;" id="kdStats3"></canvas>
+                        <label class="label label-default">Best KD: {{highestKDChamp.ChampionName}} with a KDA = {{highestKDChamp.AverageKDA}}</label>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+    </div>
+
+    <div class="row" ng-click="drawGameGraph();">
+        <div class="col-md-12">
+            <accordion>
+                <accordion-group is-open="status.open">
+                    <accordion-heading>
+                        Game Stats
+                    </accordion-heading>
+                    <div id="gameStatsDiv0">
+                        <canvas style="width:100%;" id="gameStats0"></canvas>
+                        <label class="label label-default">Most Played Champ: {{highestGameCountChamp.ChampionName}} with {{highestGameCountChamp.gameCount}} games played!</label>
+                    </div>
+                    <div id="gameStatsDiv1">
+                        <canvas style="width:100%;" id="gameStats1"></canvas>
+                        <label class="label label-default">Most Played Champ: {{highestGameCountChamp.ChampionName}} with {{highestGameCountChamp.gameCount}} games played!</label>
+                    </div>
+                    <div id="gameStatsDiv2">
+                        <canvas style="width:100%;" id="gameStats2"></canvas>
+                        <label class="label label-default">Most Played Champ: {{highestGameCountChamp.ChampionName}} with {{highestGameCountChamp.gameCount}} games played!</label>
+                    </div>
+                    <div id="gameStatsDiv3">
+                        <canvas style="width:100%;" id="gameStats3"></canvas>
+                        <label class="label label-default">Most Played Champ: {{highestGameCountChamp.ChampionName}} with {{highestGameCountChamp.gameCount}} games played!</label>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script type="text/javascript" src="~/Scripts/angular.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="~/Scripts/Chart.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="~/Scripts/AngularScripts/AngularScripts.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ui-bootstrap-csp.css" rel="stylesheet" />
+</head>
+<body ng-app="application">
+    <div class="container-fluid">
+        <header>
+            <div class="content-wrapper">
+                <navigation-page></navigation-page>
+            </div>
+        </header>
+        <div id="body">
+            <section class="content-wrapper container-fluid main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,735 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{79788383-ABA2-4FA1-AE66-6F6FCFCE1A5A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlackMarketBrawlersBigData</RootNamespace>
+    <AssemblyName>BlackMarketBrawlersBigData</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\spinner.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="HTML\championModal.html" />
+    <Content Include="HTML\championTable.html" />
+    <Content Include="HTML\loadingPage.html" />
+    <Content Include="HTML\statsTable.html" />
+    <Content Include="Images\ChampionImages\Aatrox_Square_0.png" />
+    <Content Include="Images\ChampionImages\Ahri_Square_0.png" />
+    <Content Include="Images\ChampionImages\Akali_Square_0.png" />
+    <Content Include="Images\ChampionImages\Alistar_Square_0.png" />
+    <Content Include="Images\ChampionImages\Amumu_Square_0.png" />
+    <Content Include="Images\ChampionImages\Anivia_Square_0.png" />
+    <Content Include="Images\ChampionImages\Annie_Square_0.png" />
+    <Content Include="Images\ChampionImages\Ashe_Square_0.png" />
+    <Content Include="Images\ChampionImages\Azir_Square_0.png" />
+    <Content Include="Images\ChampionImages\Bard_Square_0.png" />
+    <Content Include="Images\ChampionImages\Blitzcrank_Square_0.png" />
+    <Content Include="Images\ChampionImages\Brand_Square_0.png" />
+    <Content Include="Images\ChampionImages\Braum_Square_0.png" />
+    <Content Include="Images\ChampionImages\Caitlyn_Square_0.png" />
+    <Content Include="Images\ChampionImages\Cassiopeia_Square_0.png" />
+    <Content Include="Images\ChampionImages\Chogath_Square_0.png" />
+    <Content Include="Images\ChampionImages\Corki_Square_0.png" />
+    <Content Include="Images\ChampionImages\Darius_Square_0.png" />
+    <Content Include="Images\ChampionImages\Diana_Square_0.png" />
+    <Content Include="Images\ChampionImages\Draven_Square_0.png" />
+    <Content Include="Images\ChampionImages\DrMundo_Square_0.png" />
+    <Content Include="Images\ChampionImages\Ekko_Square_0.png" />
+    <Content Include="Images\ChampionImages\Elise_Square_0.png" />
+    <Content Include="Images\ChampionImages\Evelynn_Square_0.png" />
+    <Content Include="Images\ChampionImages\Ezreal_Square_0.png" />
+    <Content Include="Images\ChampionImages\Fiddlesticks_Square_0.png" />
+    <Content Include="Images\ChampionImages\Fiora_Square_0.png" />
+    <Content Include="Images\ChampionImages\Fizz_square_0.png" />
+    <Content Include="Images\ChampionImages\Galio_Square_0.png" />
+    <Content Include="Images\ChampionImages\Gangplank_Square_0.png" />
+    <Content Include="Images\ChampionImages\Garen_Square_0.png" />
+    <Content Include="Images\ChampionImages\Gnar_Square_0.png" />
+    <Content Include="Images\ChampionImages\Gragas_Square_0.png" />
+    <Content Include="Images\ChampionImages\Graves_Square_0.png" />
+    <Content Include="Images\ChampionImages\Hecarim_Square_0.png" />
+    <Content Include="Images\ChampionImages\Heimerdinger_Square_0.png" />
+    <Content Include="Images\ChampionImages\Irelia_Square_0.png" />
+    <Content Include="Images\ChampionImages\Janna_Square_0.png" />
+    <Content Include="Images\ChampionImages\JarvanIV_Square_0.png" />
+    <Content Include="Images\ChampionImages\Jax_Square_0.png" />
+    <Content Include="Images\ChampionImages\Jayce_Square_0.png" />
+    <Content Include="Images\ChampionImages\Jinx_Square_0.png" />
+    <Content Include="Images\ChampionImages\Kalista_Square_0.png" />
+    <Content Include="Images\ChampionImages\Karma_Square_0.png" />
+    <Content Include="Images\ChampionImages\Karthus_Square_0.png" />
+    <Content Include="Images\ChampionImages\Kassadin_Square_0.png" />
+    <Content Include="Images\ChampionImages\Katarina_Square_0.png" />
+    <Content Include="Images\ChampionImages\Kayle_Square_0.png" />
+    <Content Include="Images\ChampionImages\Kennen_Square_0.png" />
+    <Content Include="Images\ChampionImages\Khazix_Square_0.png" />
+    <Content Include="Images\ChampionImages\KogMaw_Square_0.png" />
+    <Content Include="Images\ChampionImages\Leblanc_Square_0.png" />
+    <Content Include="Images\ChampionImages\LeeSin_Square_0.png" />
+    <Content Include="Images\ChampionImages\Leona_Square_0.png" />
+    <Content Include="Images\ChampionImages\Lissandra_Square_0.png" />
+    <Content Include="Images\ChampionImages\Lucian_Square_0.png" />
+    <Content Include="Images\ChampionImages\Lulu_Square_0.png" />
+    <Content Include="Images\ChampionImages\Lux_Square_0.png" />
+    <Content Include="Images\ChampionImages\Malphite_Square_0.png" />
+    <Content Include="Images\ChampionImages\Malzahar_Square_0.png" />
+    <Content Include="Images\ChampionImages\Maokai_Square_0.png" />
+    <Content Include="Images\ChampionImages\MasterYi_Square_0.png" />
+    <Content Include="Images\ChampionImages\MissFortune_Square_0.png" />
+    <Content Include="Images\ChampionImages\MonkeyKing_Square_0.png" />
+    <Content Include="Images\ChampionImages\Mordekaiser_Square_0.png" />
+    <Content Include="Images\ChampionImages\Morgana_Square_0.png" />
+    <Content Include="Images\ChampionImages\Nami_Square_0.png" />
+    <Content Include="Images\ChampionImages\Nasus_Square_0.png" />
+    <Content Include="Images\ChampionImages\Nautilus_Square_0.png" />
+    <Content Include="Images\ChampionImages\Nidalee_Square_0.png" />
+    <Content Include="Images\ChampionImages\Nocturne_Square_0.png" />
+    <Content Include="Images\ChampionImages\Nunu_Square_0.png" />
+    <Content Include="Images\ChampionImages\Olaf_Square_0.png" />
+    <Content Include="Images\ChampionImages\Orianna_Square_0.png" />
+    <Content Include="Images\ChampionImages\Pantheon_Square_0.png" />
+    <Content Include="Images\ChampionImages\Poppy_Square_0.png" />
+    <Content Include="Images\ChampionImages\Quinn_Square_0.png" />
+    <Content Include="Images\ChampionImages\Rammus_Square_0.png" />
+    <Content Include="Images\ChampionImages\RekSai_Square_0.png" />
+    <Content Include="Images\ChampionImages\Renekton_Square_0.png" />
+    <Content Include="Images\ChampionImages\Rengar_Square_0.png" />
+    <Content Include="Images\ChampionImages\Riven_Square_0.png" />
+    <Content Include="Images\ChampionImages\Rumble_Square_0.png" />
+    <Content Include="Images\ChampionImages\Ryze_Square_0.png" />
+    <Content Include="Images\ChampionImages\Sejuani_Square_0.png" />
+    <Content Include="Images\ChampionImages\Shaco_Square_0.png" />
+    <Content Include="Images\ChampionImages\Shen_Square_0.png" />
+    <Content Include="Images\ChampionImages\Shyvana_Square_0.png" />
+    <Content Include="Images\ChampionImages\Singed_Square_0.png" />
+    <Content Include="Images\ChampionImages\Sion_Square_0.png" />
+    <Content Include="Images\ChampionImages\Sivir_Square_0.png" />
+    <Content Include="Images\ChampionImages\Skarner_Square_0.png" />
+    <Content Include="Images\ChampionImages\Sona_Square_0.png" />
+    <Content Include="Images\ChampionImages\Soraka_Square_0.png" />
+    <Content Include="Images\ChampionImages\Swain_Square_0.png" />
+    <Content Include="Images\ChampionImages\Syndra_Square_0.png" />
+    <Content Include="Images\ChampionImages\TahmKench_Square_0.png" />
+    <Content Include="Images\ChampionImages\Talon_Square_0.png" />
+    <Content Include="Images\ChampionImages\Taric_Square_0.png" />
+    <Content Include="Images\ChampionImages\Teemo_Square_0.png" />
+    <Content Include="Images\ChampionImages\Thresh_Square_0.png" />
+    <Content Include="Images\ChampionImages\Tristana_Square_0.png" />
+    <Content Include="Images\ChampionImages\Trundle_Square_0.png" />
+    <Content Include="Images\ChampionImages\Tryndamere_Square_0.png" />
+    <Content Include="Images\ChampionImages\TwistedFate_Square_0.png" />
+    <Content Include="Images\ChampionImages\Twitch_Square_0.png" />
+    <Content Include="Images\ChampionImages\Udyr_Square_0.png" />
+    <Content Include="Images\ChampionImages\Urgot_Square_0.png" />
+    <Content Include="Images\ChampionImages\Varus_Square_0.png" />
+    <Content Include="Images\ChampionImages\Vayne_Square_0.png" />
+    <Content Include="Images\ChampionImages\Veigar_Square_0.png" />
+    <Content Include="Images\ChampionImages\VelKoz_Square_0.png" />
+    <Content Include="Images\ChampionImages\Viktor_Square_0.png" />
+    <Content Include="Images\ChampionImages\Vi_Square_0.png" />
+    <Content Include="Images\ChampionImages\Vladimir_Square_0.png" />
+    <Content Include="Images\ChampionImages\Voidgate_Square_0.png" />
+    <Content Include="Images\ChampionImages\Voidspawn_Square_0.png" />
+    <Content Include="Images\ChampionImages\Volibear_Square_0.png" />
+    <Content Include="Images\ChampionImages\Warwick_Square_0.png" />
+    <Content Include="Images\ChampionImages\Xerath_Square_0.png" />
+    <Content Include="Images\ChampionImages\XinZhao_Square_0.png" />
+    <Content Include="Images\ChampionImages\Yasuo_Square_0.png" />
+    <Content Include="Images\ChampionImages\Yorick_Square_0.png" />
+    <Content Include="Images\ChampionImages\Zac_Square_0.png" />
+    <Content Include="Images\ChampionImages\Zed_Square_0.png" />
+    <Content Include="Images\ChampionImages\Ziggs_Square_0.png" />
+    <Content Include="Images\ChampionImages\Zilean_Square_0.png" />
+    <Content Include="Images\ChampionImages\Zyra_Square_0.png" />
+    <Content Include="Images\ItemImages\Abyssal Scepter.png" />
+    <Content Include="Images\ItemImages\Aegis of the Legion.png" />
+    <Content Include="Images\ItemImages\Aether Wisp.png" />
+    <Content Include="Images\ItemImages\Amplifying Tome.png" />
+    <Content Include="Images\ItemImages\Ancient Coin.png" />
+    <Content Include="Images\ItemImages\Archangel%27s Staff.png" />
+    <Content Include="Images\ItemImages\Ardent Censer.png" />
+    <Content Include="Images\ItemImages\Athene%27s Unholy Grail.png" />
+    <Content Include="Images\ItemImages\Avarice Blade.png" />
+    <Content Include="Images\ItemImages\B. F. Sword.png" />
+    <Content Include="Images\ItemImages\Bami%27s Cinder.png" />
+    <Content Include="Images\ItemImages\Banner of Command.png" />
+    <Content Include="Images\ItemImages\Banshee%27s Veil.png" />
+    <Content Include="Images\ItemImages\Berserker%27s Greaves.png" />
+    <Content Include="Images\ItemImages\Bilgewater Cutlass.png" />
+    <Content Include="Images\ItemImages\Blade of the Ruined King.png" />
+    <Content Include="Images\ItemImages\Blasting Wand.png" />
+    <Content Include="Images\ItemImages\Boots of Mobility.png" />
+    <Content Include="Images\ItemImages\Boots of Speed.png" />
+    <Content Include="Images\ItemImages\Boots of Swiftness.png" />
+    <Content Include="Images\ItemImages\Brawler%27s Gloves.png" />
+    <Content Include="Images\ItemImages\Catalyst the Protector.png" />
+    <Content Include="Images\ItemImages\Chain Vest.png" />
+    <Content Include="Images\ItemImages\Chalice of Harmony.png" />
+    <Content Include="Images\ItemImages\Cloak of Agility.png" />
+    <Content Include="Images\ItemImages\Cloth Armor.png" />
+    <Content Include="Images\ItemImages\Crystalline Bracer.png" />
+    <Content Include="Images\ItemImages\Crystalline Flask.png" />
+    <Content Include="Images\ItemImages\Dagger.png" />
+    <Content Include="Images\ItemImages\Dead Man%27s Plate.png" />
+    <Content Include="Images\ItemImages\Doran%27s Blade.png" />
+    <Content Include="Images\ItemImages\Doran%27s Ring.png" />
+    <Content Include="Images\ItemImages\Doran%27s Shield.png" />
+    <Content Include="Images\ItemImages\Elixir of Iron.png" />
+    <Content Include="Images\ItemImages\Elixir of Ruin.png" />
+    <Content Include="Images\ItemImages\Elixir of Sorcery.png" />
+    <Content Include="Images\ItemImages\Elixir of Wrath.png" />
+    <Content Include="Images\ItemImages\Enchantment Alacrity.png" />
+    <Content Include="Images\ItemImages\Enchantment Captain.png" />
+    <Content Include="Images\ItemImages\Enchantment Cinderhulk.png" />
+    <Content Include="Images\ItemImages\Enchantment Devourer.png" />
+    <Content Include="Images\ItemImages\Enchantment Distortion.png" />
+    <Content Include="Images\ItemImages\Enchantment Furor.png" />
+    <Content Include="Images\ItemImages\Enchantment Homeguard.png" />
+    <Content Include="Images\ItemImages\Enchantment Runeglaive.png" />
+    <Content Include="Images\ItemImages\Enchantment Sated Devourer.png" />
+    <Content Include="Images\ItemImages\Enchantment Warrior.png" />
+    <Content Include="Images\ItemImages\Essence Reaver.png" />
+    <Content Include="Images\ItemImages\Face of the Mountain.png" />
+    <Content Include="Images\ItemImages\Faerie Charm.png" />
+    <Content Include="Images\ItemImages\Fiendish Codex.png" />
+    <Content Include="Images\ItemImages\Flesheater %28Melee Only%29.png" />
+    <Content Include="Images\ItemImages\Forbidden Idol.png" />
+    <Content Include="Images\ItemImages\Frost Queen%27s Claim.png" />
+    <Content Include="Images\ItemImages\Frostfang.png" />
+    <Content Include="Images\ItemImages\Frozen Heart.png" />
+    <Content Include="Images\ItemImages\Frozen Mallet.png" />
+    <Content Include="Images\ItemImages\Giant%27s Belt.png" />
+    <Content Include="Images\ItemImages\Glacial Shroud.png" />
+    <Content Include="Images\ItemImages\Globe of Trust.png" />
+    <Content Include="Images\ItemImages\Guardian Angel.png" />
+    <Content Include="Images\ItemImages\Guinsoo%27s Rageblade.png" />
+    <Content Include="Images\ItemImages\Haunting Guise.png" />
+    <Content Include="Images\ItemImages\Health Potion.png" />
+    <Content Include="Images\ItemImages\Hexdrinker.png" />
+    <Content Include="Images\ItemImages\Hextech Gunblade.png" />
+    <Content Include="Images\ItemImages\Hextech Revolver.png" />
+    <Content Include="Images\ItemImages\Hunter%27s Machete.png" />
+    <Content Include="Images\ItemImages\Iceborn Gauntlet.png" />
+    <Content Include="Images\ItemImages\Infinity Edge.png" />
+    <Content Include="Images\ItemImages\Ionian Boots of Lucidity.png" />
+    <Content Include="Images\ItemImages\Kindlegem.png" />
+    <Content Include="Images\ItemImages\Last Whisper.png" />
+    <Content Include="Images\ItemImages\Liandry%27s Torment.png" />
+    <Content Include="Images\ItemImages\Lich Bane.png" />
+    <Content Include="Images\ItemImages\Locket of the Iron Solari.png" />
+    <Content Include="Images\ItemImages\Long Sword.png" />
+    <Content Include="Images\ItemImages\Lost Chapter.png" />
+    <Content Include="Images\ItemImages\Luden%27s Echo.png" />
+    <Content Include="Images\ItemImages\Mana Potion.png" />
+    <Content Include="Images\ItemImages\Manamune.png" />
+    <Content Include="Images\ItemImages\Martyr%27s Gambit.png" />
+    <Content Include="Images\ItemImages\Maw of Malmortius.png" />
+    <Content Include="Images\ItemImages\Mejai%27s Soulstealer.png" />
+    <Content Include="Images\ItemImages\Mercurial Scimitar.png" />
+    <Content Include="Images\ItemImages\Mercury%27s Treads.png" />
+    <Content Include="Images\ItemImages\Mikael%27s Crucible.png" />
+    <Content Include="Images\ItemImages\Mirage Blade.png" />
+    <Content Include="Images\ItemImages\Muramana.png" />
+    <Content Include="Images\ItemImages\Murksphere.png" />
+    <Content Include="Images\ItemImages\Nashor%27s Tooth.png" />
+    <Content Include="Images\ItemImages\Needlessly Large Rod.png" />
+    <Content Include="Images\ItemImages\Negatron Cloak.png" />
+    <Content Include="Images\ItemImages\Netherstride Grimoire.png" />
+    <Content Include="Images\ItemImages\Ninja Tabi.png" />
+    <Content Include="Images\ItemImages\Nomad%27s Medallion.png" />
+    <Content Include="Images\ItemImages\Null-Magic Mantle.png" />
+    <Content Include="Images\ItemImages\Ohmwrecker.png" />
+    <Content Include="Images\ItemImages\Perfect Hex Core.png" />
+    <Content Include="Images\ItemImages\Phage.png" />
+    <Content Include="Images\ItemImages\Phantom Dancer.png" />
+    <Content Include="Images\ItemImages\Pickaxe.png" />
+    <Content Include="Images\ItemImages\Poacher%27s Knife.png" />
+    <Content Include="Images\ItemImages\Pox Arcana.png" />
+    <Content Include="Images\ItemImages\Prototype Hex Core.png" />
+    <Content Include="Images\ItemImages\Puppeteer.png" />
+    <Content Include="Images\ItemImages\Quicksilver Sash.png" />
+    <Content Include="Images\ItemImages\Rabadon%27s Deathcap.png" />
+    <Content Include="Images\ItemImages\Randuin%27s Omen.png" />
+    <Content Include="Images\ItemImages\Ranger%27s Trailblazer.png" />
+    <Content Include="Images\ItemImages\Raptor Cloak.png" />
+    <Content Include="Images\ItemImages\Ravenous Hydra %28Melee Only%29.png" />
+    <Content Include="Images\ItemImages\Recurve Bow.png" />
+    <Content Include="Images\ItemImages\Rejuvenation Bead.png" />
+    <Content Include="Images\ItemImages\Relic Shield.png" />
+    <Content Include="Images\ItemImages\Righteous Glory.png" />
+    <Content Include="Images\ItemImages\Rite of Ruin.png" />
+    <Content Include="Images\ItemImages\Rod of Ages.png" />
+    <Content Include="Images\ItemImages\Ruby Crystal.png" />
+    <Content Include="Images\ItemImages\Ruby Sightstone.png" />
+    <Content Include="Images\ItemImages\Runaan%27s Hurricane %28Ranged Only%29.png" />
+    <Content Include="Images\ItemImages\Rylai%27s Crystal Scepter.png" />
+    <Content Include="Images\ItemImages\Sapphire Crystal.png" />
+    <Content Include="Images\ItemImages\Seeker%27s Armguard.png" />
+    <Content Include="Images\ItemImages\Seraph%27s Embrace.png" />
+    <Content Include="Images\ItemImages\Sheen.png" />
+    <Content Include="Images\ItemImages\Sightstone.png" />
+    <Content Include="Images\ItemImages\Skirmisher%27s Sabre.png" />
+    <Content Include="Images\ItemImages\Sorcerer%27s Shoes.png" />
+    <Content Include="Images\ItemImages\Spectre%27s Cowl.png" />
+    <Content Include="Images\ItemImages\Spellthief%27s Edge.png" />
+    <Content Include="Images\ItemImages\Spirit Visage.png" />
+    <Content Include="Images\ItemImages\Staff of Flowing Water.png" />
+    <Content Include="Images\ItemImages\Stalker%27s Blade.png" />
+    <Content Include="Images\ItemImages\Statikk Shiv.png" />
+    <Content Include="Images\ItemImages\Stealth Ward.png" />
+    <Content Include="Images\ItemImages\Stinger.png" />
+    <Content Include="Images\ItemImages\Sunfire Cape.png" />
+    <Content Include="Images\ItemImages\Swindler%27s Orb.png" />
+    <Content Include="Images\ItemImages\Sword of the Occult.png" />
+    <Content Include="Images\ItemImages\Talisman of Ascension.png" />
+    <Content Include="Images\ItemImages\Targon%27s Brace.png" />
+    <Content Include="Images\ItemImages\Tear of the Goddess.png" />
+    <Content Include="Images\ItemImages\The Black Cleaver.png" />
+    <Content Include="Images\ItemImages\The Black Spear.png" />
+    <Content Include="Images\ItemImages\The Bloodthirster.png" />
+    <Content Include="Images\ItemImages\The Brutalizer.png" />
+    <Content Include="Images\ItemImages\The Hex Core mk-1.png" />
+    <Content Include="Images\ItemImages\The Hex Core mk-2.png" />
+    <Content Include="Images\ItemImages\Thornmail.png" />
+    <Content Include="Images\ItemImages\Tiamat %28Melee Only%29.png" />
+    <Content Include="Images\ItemImages\Total Biscuit of Rejuvenation.png" />
+    <Content Include="Images\ItemImages\Trickster%27s Glass.png" />
+    <Content Include="Images\ItemImages\Trinity Force.png" />
+    <Content Include="Images\ItemImages\Twin Shadows.png" />
+    <Content Include="Images\ItemImages\Typhoon Claws.png" />
+    <Content Include="Images\ItemImages\Vampiric Scepter.png" />
+    <Content Include="Images\ItemImages\Vision Ward.png" />
+    <Content Include="Images\ItemImages\Void Staff.png" />
+    <Content Include="Images\ItemImages\Warden%27s Mail.png" />
+    <Content Include="Images\ItemImages\Warmog%27s Armor.png" />
+    <Content Include="Images\ItemImages\Will of the Ancients.png" />
+    <Content Include="Images\ItemImages\Wit%27s End.png" />
+    <Content Include="Images\ItemImages\Youmuu%27s Ghostblade.png" />
+    <Content Include="Images\ItemImages\Zeal.png" />
+    <Content Include="Images\ItemImages\Zeke%27s Harbinger.png" />
+    <Content Include="Images\ItemImages\Zephyr.png" />
+    <Content Include="Images\ItemImages\Zhonya%27s Hourglass.png" />
+    <Content Include="Images\ItemImages\Zz%27Rot Portal.png" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularScripts\AngularScripts.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="JSON\Champions\Aatrox.json" />
+    <Content Include="JSON\Champions\Ahri.json" />
+    <Content Include="JSON\Champions\Akali.json" />
+    <Content Include="JSON\Champions\Alistar.json" />
+    <Content Include="JSON\Champions\Amumu.json" />
+    <Content Include="JSON\Champions\Anivia.json" />
+    <Content Include="JSON\Champions\Annie.json" />
+    <Content Include="JSON\Champions\Ashe.json" />
+    <Content Include="JSON\Champions\Azir.json" />
+    <Content Include="JSON\Champions\Bard.json" />
+    <Content Include="JSON\Champions\Blitzcrank.json" />
+    <Content Include="JSON\Champions\Brand.json" />
+    <Content Include="JSON\Champions\Braum.json" />
+    <Content Include="JSON\Champions\Caitlyn.json" />
+    <Content Include="JSON\Champions\Cassiopeia.json" />
+    <Content Include="JSON\Champions\Cho%27Gath.json" />
+    <Content Include="JSON\Champions\Corki.json" />
+    <Content Include="JSON\Champions\Darius.json" />
+    <Content Include="JSON\Champions\Diana.json" />
+    <Content Include="JSON\Champions\Dr. Mundo.json" />
+    <Content Include="JSON\Champions\Draven.json" />
+    <Content Include="JSON\Champions\Ekko.json" />
+    <Content Include="JSON\Champions\Elise.json" />
+    <Content Include="JSON\Champions\Evelynn.json" />
+    <Content Include="JSON\Champions\Ezreal.json" />
+    <Content Include="JSON\Champions\Fiddlesticks.json" />
+    <Content Include="JSON\Champions\Fiora.json" />
+    <Content Include="JSON\Champions\Fizz.json" />
+    <Content Include="JSON\Champions\Galio.json" />
+    <Content Include="JSON\Champions\Garen.json" />
+    <Content Include="JSON\Champions\Gnar.json" />
+    <Content Include="JSON\Champions\Gragas.json" />
+    <Content Include="JSON\Champions\Graves.json" />
+    <Content Include="JSON\Champions\Hecarim.json" />
+    <Content Include="JSON\Champions\Heimerdinger.json" />
+    <Content Include="JSON\Champions\Irelia.json" />
+    <Content Include="JSON\Champions\Janna.json" />
+    <Content Include="JSON\Champions\Jarvan IV.json" />
+    <Content Include="JSON\Champions\Jax.json" />
+    <Content Include="JSON\Champions\Jayce.json" />
+    <Content Include="JSON\Champions\Jinx.json" />
+    <Content Include="JSON\Champions\Kalista.json" />
+    <Content Include="JSON\Champions\Karma.json" />
+    <Content Include="JSON\Champions\Karthus.json" />
+    <Content Include="JSON\Champions\Kassadin.json" />
+    <Content Include="JSON\Champions\Katarina.json" />
+    <Content Include="JSON\Champions\Kayle.json" />
+    <Content Include="JSON\Champions\Kennen.json" />
+    <Content Include="JSON\Champions\Kha%27Zix.json" />
+    <Content Include="JSON\Champions\Kog%27Maw.json" />
+    <Content Include="JSON\Champions\LeBlanc.json" />
+    <Content Include="JSON\Champions\Lee Sin.json" />
+    <Content Include="JSON\Champions\Leona.json" />
+    <Content Include="JSON\Champions\Lissandra.json" />
+    <Content Include="JSON\Champions\Lucian.json" />
+    <Content Include="JSON\Champions\Lulu.json" />
+    <Content Include="JSON\Champions\Lux.json" />
+    <Content Include="JSON\Champions\Malphite.json" />
+    <Content Include="JSON\Champions\Malzahar.json" />
+    <Content Include="JSON\Champions\Maokai.json" />
+    <Content Include="JSON\Champions\Master Yi.json" />
+    <Content Include="JSON\Champions\Miss Fortune.json" />
+    <Content Include="JSON\Champions\Mordekaiser.json" />
+    <Content Include="JSON\Champions\Morgana.json" />
+    <Content Include="JSON\Champions\Nami.json" />
+    <Content Include="JSON\Champions\Nasus.json" />
+    <Content Include="JSON\Champions\Nautilus.json" />
+    <Content Include="JSON\Champions\Nidalee.json" />
+    <Content Include="JSON\Champions\Nocturne.json" />
+    <Content Include="JSON\Champions\Nunu.json" />
+    <Content Include="JSON\Champions\Olaf.json" />
+    <Content Include="JSON\Champions\Orianna.json" />
+    <Content Include="JSON\Champions\Pantheon.json" />
+    <Content Include="JSON\Champions\Poppy.json" />
+    <Content Include="JSON\Champions\Quinn.json" />
+    <Content Include="JSON\Champions\Rammus.json" />
+    <Content Include="JSON\Champions\Rek%27Sai.json" />
+    <Content Include="JSON\Champions\Renekton.json" />
+    <Content Include="JSON\Champions\Rengar.json" />
+    <Content Include="JSON\Champions\Riven.json" />
+    <Content Include="JSON\Champions\Rumble.json" />
+    <Content Include="JSON\Champions\Ryze.json" />
+    <Content Include="JSON\Champions\Sejuani.json" />
+    <Content Include="JSON\Champions\Shaco.json" />
+    <Content Include="JSON\Champions\Shen.json" />
+    <Content Include="JSON\Champions\Shyvana.json" />
+    <Content Include="JSON\Champions\Singed.json" />
+    <Content Include="JSON\Champions\Sion.json" />
+    <Content Include="JSON\Champions\Sivir.json" />
+    <Content Include="JSON\Champions\Skarner.json" />
+    <Content Include="JSON\Champions\Sona.json" />
+    <Content Include="JSON\Champions\Soraka.json" />
+    <Content Include="JSON\Champions\Swain.json" />
+    <Content Include="JSON\Champions\Syndra.json" />
+    <Content Include="JSON\Champions\Tahm Kench.json" />
+    <Content Include="JSON\Champions\Talon.json" />
+    <Content Include="JSON\Champions\Taric.json" />
+    <Content Include="JSON\Champions\Teemo.json" />
+    <Content Include="JSON\Champions\Thresh.json" />
+    <Content Include="JSON\Champions\Tristana.json" />
+    <Content Include="JSON\Champions\Trundle.json" />
+    <Content Include="JSON\Champions\Tryndamere.json" />
+    <Content Include="JSON\Champions\Twisted Fate.json" />
+    <Content Include="JSON\Champions\Twitch.json" />
+    <Content Include="JSON\Champions\Udyr.json" />
+    <Content Include="JSON\Champions\Urgot.json" />
+    <Content Include="JSON\Champions\Varus.json" />
+    <Content Include="JSON\Champions\Vayne.json" />
+    <Content Include="JSON\Champions\Veigar.json" />
+    <Content Include="JSON\Champions\Vel%27Koz.json" />
+    <Content Include="JSON\Champions\Vi.json" />
+    <Content Include="JSON\Champions\Viktor.json" />
+    <Content Include="JSON\Champions\Vladimir.json" />
+    <Content Include="JSON\Champions\Volibear.json" />
+    <Content Include="JSON\Champions\Warwick.json" />
+    <Content Include="JSON\Champions\Wukong.json" />
+    <Content Include="JSON\Champions\Xerath.json" />
+    <Content Include="JSON\Champions\Xin Zhao.json" />
+    <Content Include="JSON\Champions\Yasuo.json" />
+    <Content Include="JSON\Champions\Yorick.json" />
+    <Content Include="JSON\Champions\Zac.json" />
+    <Content Include="JSON\Champions\Zed.json" />
+    <Content Include="JSON\Champions\Ziggs.json" />
+    <Content Include="JSON\Champions\Zilean.json" />
+    <Content Include="JSON\Champions\Zyra.json" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Champion.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\DataMining.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="JSON\DataSet\NA.json" />
+    <Content Include="JSON\DataSet\test.json" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52831</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52831/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

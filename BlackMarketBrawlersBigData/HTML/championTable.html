@@ -1,0 +1,12 @@
+﻿<section>
+    <table>
+        <tr>
+            <td>
+                <div ng-repeat="champion in champions | filter:searchChampions:false track by $index" class="col-md-2" ng-click="setChampion(champion);open('lg')">
+                    <img class="img-rounded" ng-src="/Images/ChampionImages/{{champion.ChampionName}}_Square_0.png" />
+                    <label class="label label-default">{{champion.ChampionName}}</label>
+                </div>
+            </td>
+        </tr>
+    </table>
+</section>
