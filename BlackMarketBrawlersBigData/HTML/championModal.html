@@ -18,6 +18,7 @@
                         <div id="lanePrefRadarDiv">
                             <canvas id="lanePrefRadar"></canvas>
                             <label class="label label-default">Favorite Lane: {{champion.LanePref}}</label>
+                            <div id="lanePrefRadarLegend"></div>
                         </div>
                     </accordion-group>
                 </accordion>
@@ -32,6 +33,7 @@
                         <div id="killDeathStatsDiv">
                             <canvas id="killDeathStats"></canvas>
                             <label class="label label-default">Average KD: {{champion.AverageKDA}}%</label>
+                            <div id="killDeathStatsLegend"></div>
                         </div>
                     </accordion-group>
                 </accordion>
@@ -47,6 +49,7 @@
                         </accordion-heading>
                         <div id="averageGameStatsDiv">
                             <canvas id="averageGameStats"></canvas>
+                            <div id="averageGameStatsLegend"></div>
                         </div>
                     </accordion-group>
                 </accordion>
@@ -56,11 +59,12 @@
                 <accordion>
                     <accordion-group is-open="status.open">
                         <accordion-heading>
-                            Ban Stats
+                            Ban Stats F(x) = (banCount)/(gameCount)
                         </accordion-heading>
                         <div id="banStatsDiv">
                             <canvas id="banStats"></canvas>
                             <label class="label label-default">Average Ban Rate: {{champion.banRate}}%</label>
+                            <div id="banStatsLegend"></div>
                         </div>
                     </accordion-group>
                 </accordion>

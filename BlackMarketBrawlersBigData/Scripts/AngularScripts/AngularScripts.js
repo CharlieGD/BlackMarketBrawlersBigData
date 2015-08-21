@@ -37,7 +37,7 @@
                     var path = "/Home/getChampions";
                     $http.get(path).success(function (data) {
                         $scope.champions = angular.fromJson(data);
-                        for (var i = 1, max = $scope.champions.length + 1; i < max; i++) {
+                        for (var i = 0, max = $scope.champions.length; i < max; i++) {
                             if ($scope.champions[i] !== undefined && $scope.champions[i] !== null) {
                                 $scope.championNames.push($scope.champions[i].ChampionName);
                                 $scope.champions[i] = $scope.calculateLanePreference($scope.champions[i]);
@@ -48,10 +48,11 @@
                                 if ($scope.highestGameCount < $scope.champions[i].gameCount) {
                                     $scope.highestGameCount = $scope.champions[i].gameCount;
                                     $scope.highestGameCountChamp = $scope.champions[i];
-                                } 
+                                }
                             }
                         }
                         $scope.setChampionNamesRows();
+                        $scope.calculateMostPlayedLane();
                     }).error(function (data) {
                         console.log(data);
                     });
@@ -138,11 +139,11 @@
                 $scope.isGraph2Complete = false;
                 $scope.isGraph3Complete = false;
 
-                //Calculate which lanehas most champions
+                //Calculate which lane was played the most by a champion
                 $scope.calculateMostPlayedLane = function () {
                     var array = [$scope.topChampions.length, $scope.bottomChampions.length, $scope.middleChampions.length, $scope.jungleChampions.length], temp = 0;
-                    for (var i = 0; i < array.length; i ++){
-                        if(temp < array[i]){
+                    for (var i = 0; i < array.length; i++) {
+                        if (temp < array[i]) {
                             temp = array[i];
                         }
                     }
@@ -157,7 +158,9 @@
                 //functions to draw bar graphs
                 $scope.drawBarGraph = function (data1, data2, divName, canvasName, label1, label2, rowNumber) {
                     try {
-                        var ctx = $("#" + canvasName).get(0);
+                        var millisecondsToWait = 200;
+                        setTimeout(function () {
+                            var ctx = $("#" + canvasName).get(0);
                             ctx = ctx.getContext("2d");
                             var data = {
                                 labels: $scope.championNamesRows[rowNumber],
@@ -181,11 +184,14 @@
                                 }
                                 ]
                             };
-                            var myRadarChart = new Chart(ctx).Bar(data, {
+                            var myBarGraph = new Chart(ctx).Bar(data, {
                                 legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
                             });
-                            $("#" + divName).append(myRadarChart.generateLegend());
+                            var millisecondsToWait = 200;
+                            setTimeout(function () {
+                                $("#" + divName).append(myBarGraph.generateLegend());
+                            });
+                        }, millisecondsToWait);
                     } catch (error) {
                         console.log(error.message);
                     }
@@ -213,45 +219,43 @@
 
                 $scope.drawKDGraph = function () {
                     if (!$scope.isGraph2Complete) {
-                    var data1 = [], data2 = [];
-                    for (var i = 1, max = $scope.champions.length + 1, j = 0; i < max; i++) {
-                        if ($scope.champions[i] !== undefined && $scope.champions[i] !== null) {
-                            data1.push($scope.champions[i].totalKills);
-                            data2.push($scope.champions[i].totalDeaths);
+                        var data1 = [], data2 = [];
+                        for (var i = 1, max = $scope.champions.length + 1, j = 0; i < max; i++) {
+                            if ($scope.champions[i] !== undefined && $scope.champions[i] !== null) {
+                                data1.push($scope.champions[i].totalKills);
+                                data2.push($scope.champions[i].totalDeaths);
+                            }
+                            if (i % 32 == 0) {
+                                $scope.drawBarGraph(data1, data2, 'kdStatsDiv' + j, 'kdStats' + j, 'Total Kills', 'Lane Deaths', j);
+                                j++;
+                                data1 = [];
+                                data2 = [];
+                            }
                         }
-                        if (i % 32 == 0) {
-                            $scope.drawBarGraph(data1, data2, 'kdStatsDiv' + j, 'kdStats' + j, 'Total Kills', 'Lane Deaths', j);
-                            j++;
-                            data1 = [];
-                            data2 = [];
-                        }
+                        $scope.drawBarGraph(data1, data2, 'kdStatsDiv3', 'kdStats3', 'Total Kills', 'Lane Deaths', 3);
+                        $scope.isGraph2Complete = true;
                     }
-                    $scope.drawBarGraph(data1, data2, 'kdStatsDiv3', 'kdStats3', 'Total Kills', 'Lane Deaths', 3);
-                    $scope.isGraph2Complete = true;
-                }
                 };
 
                 $scope.drawGameGraph = function () {
-                        if (!$scope.isGraph3Complete) {
-                    var data1 = [], data2 = [];
-                    for (var i = 1, max = $scope.champions.length + 1, j = 0; i < max; i++) {
-                        if ($scope.champions[i] !== undefined && $scope.champions[i] !== null) {
-                            data1.push($scope.champions[i].gameCount);
-                            data2.push($scope.champions[i].banCount);
+                    if (!$scope.isGraph3Complete) {
+                        var data1 = [], data2 = [];
+                        for (var i = 1, max = $scope.champions.length + 1, j = 0; i < max; i++) {
+                            if ($scope.champions[i] !== undefined && $scope.champions[i] !== null) {
+                                data1.push($scope.champions[i].gameCount);
+                                data2.push($scope.champions[i].banCount);
+                            }
+                            if (i % 32 == 0) {
+                                $scope.drawBarGraph(data1, data2, 'gameStatsDiv' + j, 'gameStats' + j, 'Total Games', 'Ban Count', j);
+                                j++;
+                                data1 = [];
+                                data2 = [];
+                            }
                         }
-                        if (i % 32 == 0) {
-                            $scope.drawBarGraph(data1, data2, 'gameStatsDiv' + j, 'gameStats' + j, 'Total Games', 'Ban Count', j);
-                            j++;
-                            data1 = [];
-                            data2 = [];
-                        }
+                        $scope.drawBarGraph(data1, data2, 'gameStatsDiv3', 'gameStats3', 'Total Games', 'Ban Count', 3);
+                        $scope.isGraph3Complete = true;
                     }
-                    $scope.drawBarGraph(data1, data2, 'gameStatsDiv3', 'gameStats3', 'Total Games', 'Ban Count', 3);
-                    $scope.isGraph3Complete = true;
-                }
                 };
-
-                $scope.calculateMostPlayedLane();
 
             }]
         };
@@ -286,29 +290,30 @@
         $scope.drawRadar = function () {
             try {
                 if (!$scope.drewRadar) {
-                    var ctx = $("#lanePrefRadar").get(0);
-                    ctx = ctx.getContext("2d");
-                    var data = {
-                        labels: $scope.Lanes,
-                        datasets: [
-                            {
-                                label: "Lane Prefrences",
-                                fillColor: "rgba(220,220,220,0.2)",
-                                strokeColor: "rgba(220,220,220,1)",
-                                pointColor: "rgba(220,220,220,1)",
-                                pointStrokeColor: "#fff",
-                                pointHighlightFill: "#fff",
-                                pointHighlightStroke: "rgba(220,220,220,1)",
-                                data: $scope.champion.LaneData
-                            }
-                        ]
-                    };
-                    var myRadarChart = new Chart(ctx).Radar(data, {
-                        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+                    var millisecondsToWait = 500;
+                    setTimeout(function () {
+                        var ctx = $("#lanePrefRadar").get(0);
+                        ctx = ctx.getContext("2d");
+                        var data = {
+                            labels: $scope.Lanes,
+                            datasets: [
+                                {
+                                    label: "Lane Prefrences",
+                                    fillColor: "rgba(220,220,220,0.2)",
+                                    strokeColor: "rgba(220,220,220,1)",
+                                    pointColor: "rgba(220,220,220,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(220,220,220,1)",
+                                    data: $scope.champion.LaneData
+                                }
+                            ]
+                        };
 
-                    });
-                    $("#lanePrefRadarDiv").append(myRadarChart.generateLegend());
-                    $scope.drewRadar = true;
+                        var myRadarChart = new Chart(ctx).Radar(data);
+                        document.getElementById('lanePrefRadarLegend').innerHTML = myRadarChart.generateLegend();
+                        $scope.drewRadar = true;
+                    }, millisecondsToWait);
                 }
             } catch (error) {
                 console.log(error.message);
@@ -318,28 +323,29 @@
         $scope.drawPie = function () {
             try {
                 if (!$scope.drewPie) {
-                    var ctx = $("#killDeathStats").get(0);
-                    ctx = ctx.getContext("2d");
-                    var data = [
-        {
-            value: $scope.champion.totalDeaths,
-            color: "#F7464A",
-            highlight: "#FF5A5E",
-            label: "Deaths"
-        },
-        {
-            value: $scope.champion.totalKills,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Kills"
-        },
-                    ]
+                    var millisecondsToWait = 500;
+                    setTimeout(function () {
+                        var ctx = $("#killDeathStats").get(0);
+                        ctx = ctx.getContext("2d");
+                        var data = [
+            {
+                value: $scope.champion.totalDeaths,
+                color: "#F7464A",
+                highlight: "#FF5A5E",
+                label: "Deaths"
+            },
+            {
+                value: $scope.champion.totalKills,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Kills"
+            },
+                        ]
 
-                    var myPieChart = new Chart(ctx).Pie(data, {
-                        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-                    });
-                    $("#killDeathStatsDiv").append(myPieChart.generateLegend());
-                    $scope.drewPie = true;
+                        var myPieChart = new Chart(ctx).Pie(data);
+                        document.getElementById('killDeathStatsLegend').innerHTML = myPieChart.generateLegend();
+                        $scope.drewPie = true;
+                    }, millisecondsToWait);
                 }
             } catch (error) {
                 console.log(error.message);
@@ -349,28 +355,31 @@
         $scope.drawDoghnut = function () {
             try {
                 if (!$scope.drewDoghnut) {
-                    var ctx = $("#banStats").get(0);
-                    ctx = ctx.getContext("2d");
-                    var data = [
-        {
-            value: $scope.champion.gameCount,
-            color: "#F7464A",
-            highlight: "#FF5A5E",
-            label: "Game Count"
-        },
-        {
-            value: $scope.champion.banCount,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Ban Count"
-        },
-                    ]
+                    var millisecondsToWait = 500;
+                    setTimeout(function () {
+                        var ctx = $("#banStats").get(0);
+                        ctx = ctx.getContext("2d");
+                        var data = [
+            {
+                value: $scope.champion.gameCount,
+                color: "#F7464A",
+                highlight: "#FF5A5E",
+                label: "Game Count"
+            },
+            {
+                value: $scope.champion.banCount,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Ban Count"
+            },
+                        ]
 
-                    var myDoughnutChart = new Chart(ctx).Doughnut(data, {
-                        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-                    });
-                    $("#banStatsDiv").append(myDoughnutChart.generateLegend());
-                    $scope.drewDoghnut = true;
+
+
+                        var myDoughnutChart = new Chart(ctx).Doughnut(data);
+                        document.getElementById('banStatsLegend').innerHTML = myDoughnutChart.generateLegend();
+                        $scope.drewDoghnut = true;
+                    }, millisecondsToWait);
                 }
             } catch (error) {
                 console.log(error.message);
@@ -380,35 +389,35 @@
         $scope.drawPolarAreaChart = function () {
             try {
                 if (!$scope.drewPolar) {
-                    var ctx = $("#averageGameStats").get(0);
-                    ctx = ctx.getContext("2d");
-                    var data = [
-        {
-            value: $scope.champion.killRate,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Kills Per Game"
-        },
-        {
-            value: $scope.champion.deathRate,
-            color: "#F7464A",
-            highlight: "#FF5A5E",
-            label: "Deaths Per Game"
-        },
-        {
-            value: $scope.champion.AverageKDA,
-            color: "#4D5360",
-            highlight: "#616774",
-            label: "Average KD"
-        }
-                    ]
+                    var millisecondsToWait = 500;
+                    setTimeout(function () {
+                        var ctx = $("#averageGameStats").get(0);
+                        ctx = ctx.getContext("2d");
+                        var data = [
+            {
+                value: $scope.champion.killRate,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Kills Per Game"
+            },
+            {
+                value: $scope.champion.deathRate,
+                color: "#F7464A",
+                highlight: "#FF5A5E",
+                label: "Deaths Per Game"
+            },
+            {
+                value: $scope.champion.AverageKDA,
+                color: "#4D5360",
+                highlight: "#616774",
+                label: "Average KD"
+            }
+                        ]
 
-                    var myPolarChart = new Chart(ctx).PolarArea(data, {
-                        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-
-                    });
-                    $("#averageGameStatsDiv").append(myRadarChart.generateLegend());
-                    $scope.drewPolar = true;
+                        var myPolarChart = new Chart(ctx).PolarArea(data);
+                        document.getElementById('averageGameStatsLegend').innerHTML = myPolarChart.generateLegend();
+                        $scope.drewPolar = true;
+                    }, millisecondsToWait);
                 }
             } catch (error) {
                 console.log(error.message);

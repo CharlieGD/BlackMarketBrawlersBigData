@@ -48,7 +48,7 @@ namespace BlackMarketBrawlersBigData.Controllers
             //Foreach ID from dataset getMatch Data and store it in a Json File
             foreach (var data in dataArray)
             {
-                getAndWriteJsonFilesToIO(count, data);
+                //getAndWriteJsonFilesToIO(count, data);
             }
 
             //get all those files and set them in a string array
@@ -246,7 +246,7 @@ namespace BlackMarketBrawlersBigData.Controllers
         {
             RestfulServices rest = new RestfulServices();
             string[] systemFiles = Directory.GetFiles(HttpRuntime.AppDomainAppPath + "JSON\\DataSet\\");
-            if (!systemFiles.Contains("C:\\Programming\\RiotGames\\RiotGames\\JSON\\DataSet\\" + (string)data + ".json"))
+            if (!systemFiles.Contains("C:\\Programming\\BlackMarketBrawlersBigData\\BlackMarketBrawlersBigData\\JSON\\DataSet\\" + (string)data + ".json"))
             {
                 if (count % 10 == 0)
                 {
